@@ -17,10 +17,10 @@ export default {
 <style scoped>
 .main-menu__button{
   font-weight: bold;
-  color: var(--dark);
+  color: var(--primary);
   display: inline-block;
   position: relative;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   padding: 5px 10px;
 
 }
@@ -60,4 +60,5 @@ export default {
 .main-menu__logo{
   height: 100px;
 }
+
 </style>
