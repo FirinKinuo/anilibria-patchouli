@@ -4,12 +4,13 @@
         <h3 class="today-header">Ожидается сегодня:</h3>
         <figure class="today-element" v-for="(anime, index) in getAllTodayTitles" :key="index">
             <img class="today-element__bg" :src="anime.img" :alt="anime.name">
-            <figcaption class="today-element__new">Новое</figcaption>
+            <figcaption v-if="anime.new_episode" class="today-element__new">Новое</figcaption>
         </figure>
     </section>
 </template>
 
 <script>
+
 import {mapGetters, mapActions} from "vuex"
 export default {
   name: "today-titles",
@@ -21,7 +22,8 @@ export default {
   ]),
   async mounted (){
     await this.getTodayTitlesDataFromApi();
-  }
+  },
+
 
 }
 
