@@ -2,7 +2,7 @@
     <section class="today">
         <div class="today-bg"></div>
         <h3 class="today-header">Ожидается сегодня:</h3>
-        <figure class="today-element" v-for="(anime, index) in today_titles" :key="index">
+        <figure class="today-element" v-for="(anime, index) in getAllTodayTitles" :key="index">
             <img class="today-element__bg" :src="anime.img" :alt="anime.name">
             <figcaption class="today-element__new">Новое</figcaption>
         </figure>
@@ -10,11 +10,22 @@
 </template>
 
 <script>
+import {mapGetters, mapActions} from "vuex"
 export default {
-    name: "today-titles",
-    props: ['today_titles']
+  name: "today-titles",
+  computed: mapGetters([
+      'getAllTodayTitles',
+  ]),
+  methods: mapActions([
+      'getTodayTitlesDataFromApi',
+  ]),
+  async mounted (){
+    await this.getTodayTitlesDataFromApi();
+  }
 
 }
+
+
 </script>
 
 <style scoped>

@@ -1,8 +1,8 @@
 <template>
     <main id="app" class="container-full">
       <MainMenu></MainMenu>
-        <TodayTitles :today_titles="today_titles"></TodayTitles>
-      <Library :anime_list="anime_list"></Library>
+        <TodayTitles/>
+      <Library/>
     </main>
 </template>
 
@@ -12,58 +12,14 @@ import MainMenu from "@/components/mainMenu";
 import Library from "@/components/library";
 import TodayTitles from "@/components/today-titles"
 
-const axios = require('axios')
-
 export default {
     name: 'App',
-    data(){
-        return{
-            anime_list: [],
-            today_titles: []
-        }
-    },
+
     components: {
         TodayTitles,
         MainMenu,
         Library
     },
-    mounted() {
-        let config = {
-            method: 'get',
-            url: `https://api.anilibria.tv/v2/getUpdates?filter=id,names,status,poster.url,updated,last_change,torrents.series.last&limit=${20}`,
-        };
-
-        axios(config)
-            .then((response) => {
-                response.data.forEach(anime => {
-                    this.anime_list.push({
-                        name: anime['names']['ru'],
-                        href: null,
-                        img: "https://static.anilibria.tv/"+anime.poster.url,
-                        episode: anime['torrents']['series']['last']
-                    })
-                })
-            });
-
-        config['url'] = `https://api.anilibria.tv/v2/getSchedule?days=${new Date().getDay()-1}&filter=id,names,status,poster.url,updated,last_change,torrents.series.last`
-
-        axios(config)
-            .then((response) => {
-
-
-                response.data[0]['list'].forEach(anime => {
-                    this.today_titles.push({
-                        name: anime['names']['ru'],
-                        href: null,
-                        img: "https://static.anilibria.tv/"+anime['poster']['url'],
-                        episode: anime['torrents']['series']['last'],
-                        updated: anime['updated']
-                    })
-                })
-            })
-
-
-    }
 }
 
 </script>
