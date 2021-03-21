@@ -59,4 +59,18 @@ export default {
   width: 100%;
 }
 
+.modal-wrapper{
+	position: fixed;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	top:  0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 8888;
+	background-color: rgba(33, 9, 9, 0.5);
+
+}
+
 </style>
