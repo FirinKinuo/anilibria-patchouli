@@ -1,4 +1,5 @@
 import axios from "axios";
+import {default as config} from "/config.json"
 
 
 export default {
@@ -13,16 +14,16 @@ export default {
   },
 
   actions: {
-    async getLibraryDataFromApi({commit}){
+    async getLibraryDataFromApi({commit}, limit=18){
         let titles = []
         const res = await axios.get(
-            `https://api.anilibria.tv/v2/getUpdates?filter=id,names,status,poster.url,updated,last_change,torrents.series.last&limit=${20}`
+            `${config.al_backend_api}getUpdates?filter=id,names,status,poster.url,updated,last_change,torrents.series.last&limit=${limit}`
         );
 
         res.data.forEach(anime => {
             titles.push({
                 name: anime['names']['ru'],
-                img: "https://static.anilibria.tv/" + anime.poster.url,
+                img: config.al_staticfiles_server + anime.poster.url,
                 episode: anime['torrents']['series']['last']
             })
         })

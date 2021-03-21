@@ -1,4 +1,5 @@
 import axios from "axios";
+import {default as config} from "/config.json"
 
 
 const get_current_day_for_api = () => {
@@ -24,13 +25,13 @@ export default {
     async getTodayTitlesDataFromApi({commit}){
         let titles = []
         const res = await axios.get(
-            `https://api.anilibria.tv/v2/getSchedule?days=${get_current_day_for_api()}&filter=id,names,status,poster.url,updated,last_change,torrents.series.last`
+            `${config.al_backend_api}getSchedule?days=${get_current_day_for_api()}&filter=id,names,status,poster.url,updated,last_change,torrents.series.last`
         );
 
         res.data[0]['list'].forEach(anime => {
             titles.push({
                 name: anime['names']['ru'],
-                img: "https://static.anilibria.tv/"+anime['poster']['url'],
+                img: config.al_staticfiles_server+anime['poster']['url'],
                 episode: anime['torrents']['series']['last'],
                 updated: anime['updated'],
                 new_episode: check_new_title(anime['updated'])
