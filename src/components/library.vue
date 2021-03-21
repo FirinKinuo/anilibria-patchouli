@@ -1,17 +1,26 @@
 <template>
-    <section class="adaptive-container library" id="library">
-        <figure class="library-element" v-for="(anime, index) in getLibrary" :key="index">
+    <section class="adaptive-container" id="library">
+        <LibraryMenu/>
+        <section class="library">
+          <figure class="library-element" v-for="(anime, index) in getLibrary" :key="index">
             <img class="library-element__bg" :src="anime.img" :alt="anime.name">
             <figcaption class="library-element__episode">{{ anime.episode }}</figcaption>
         </figure>
+        </section>
+
     </section>
 </template>
 
 <script>
 import {mapActions, mapGetters} from "vuex";
+import LibraryMenu from "@/components/library-menu";
 
 export default {
     name: "library",
+  components: {LibraryMenu},
+  modules: {
+      LibraryMenu
+    },
     computed: mapGetters([
       'getLibrary',
   ]),

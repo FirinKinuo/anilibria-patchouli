@@ -1,17 +1,24 @@
 <template>
 <nav class="main-menu" id="mainMenu">
+	<Auth/>
   <img src="@/assets/anilibria-patchouli-logo/patchouli-full.svg" alt="Patchouli" class="main-menu__logo">
   <div class="main-menu__buttons">
-    <button class="btn main-menu__button">Войти</button>
+    <button class="btn main-menu__button">Аккаунт</button>
   </div>
 
 </nav>
 </template>
 
 <script>
+import Auth from "@/components/auth"
 export default {
-  name: "mainMenu"
+	name: "mainMenu",
+	components: {Auth},
+	modules: {
+		Auth
+	}
 }
+
 </script>
 
 <style scoped>
