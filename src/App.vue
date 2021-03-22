@@ -40,6 +40,7 @@ export default {
     padding: 0;
     outline: none;
     border: 0;
+	color: var(--dark);
     font-family: 'Montserrat', sans-serif;
     scrollbar-width: thin;
     scrollbar-color: var(--primary) white;
@@ -68,7 +69,7 @@ export default {
 	left: 0;
 	width: 100vw;
 	height: 100vh;
-	z-index: 8888;
+	z-index: 100;
 	background-color: rgba(33, 9, 9, 0.5);
 
 }
