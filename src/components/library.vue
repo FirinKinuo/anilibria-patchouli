@@ -1,6 +1,7 @@
 <template>
     <section class="adaptive-container" id="library">
         <LibraryMenu/>
+        <AnimeCard anime=anime></AnimeCard>
         <section class="library">
           <figure class="library-element" v-for="(anime, index) in getLibrary" :key="index">
             <img class="library-element__bg" :src="anime.img" :alt="anime.name">
@@ -14,10 +15,19 @@
 <script>
 import {mapActions, mapGetters} from "vuex";
 import LibraryMenu from "@/components/library-menu";
+import AnimeCard from "@/components/anime-card";
 
 export default {
     name: "library",
-  components: {LibraryMenu},
+  components: {AnimeCard, LibraryMenu},
+    data(){
+        return {
+            anime: {
+                'name': "test",
+                'img': "https://static.anilibria.tv/upload/release/350x500/8956.jpg?1617405410"
+            }
+        }
+    },
   modules: {
       LibraryMenu
     },
