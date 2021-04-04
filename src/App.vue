@@ -29,7 +29,7 @@ export default {
 :root {
   font-size: 16pt;
   --primary: #e73321;
-  --secondary: #ffd400;
+  --secondary: #fa9600;
   --success: #69cc57;
   --warning: #ea7222;
   --dark: #011627;
@@ -40,6 +40,7 @@ export default {
     padding: 0;
     outline: none;
     border: 0;
+    text-decoration: none;
 	color: var(--dark);
     font-family: 'Montserrat', sans-serif;
     scrollbar-width: thin;
