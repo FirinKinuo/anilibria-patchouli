@@ -19,15 +19,16 @@ export default {
     actions: {
         async send_auth_data({commit}, data){
             let form_data = new FormData()
-            data.append('username', data['username'])
-            data.append('password', data['password'])
-
+            form_data.append('username', data['username'])
+            form_data.append('password', data['password'])
+            /*
             let axios_config = {
                 method: "post",
                 url: `${config.your_backend_api}auth/`,
                 data: form_data
             }
-            let res = await axios(axios_config);
+            let res = await axios(axios_config);*/
+            let res = {}
             if (res.status === 200){
                 commit("set_user_data", await axios.get(`${config.your_backend_api}user/`))
                 commit("set_user_login_status", true)

@@ -1,28 +1,10 @@
+<!--suppress CssUnusedSymbol -->
 <template>
 	<div class="modal-wrapper">
-		<section class="auth" id="auth">
-		<section class="type_select">
-			<button class="type_button type_button__active" value="login">Вход</button>
-			<button class="type_button " value="register">Регистрация</button>
-		</section>
-		<form action="" class="auth_form">
-				
-			<div class="auth_input_wrapper">
-				<input type="text" class="auth_input" id="login">
-				<label for="login">Логин</label>
-			</div>
+        <transition name="auth-mutation">
+            <router-view></router-view>
+        </transition>
 
-			<div class="auth_input_wrapper">
-				<input type="password" class="auth_input" id="password">
-				<label for="password">Пароль</label>
-			</div>
-
-			<div class="auth_submit_wrapper">
-				<button type="button" class="auth_submit" id="login_btn">Вход</button>
-				<label class="auth_remember-label" for="remember"><input class="auth_remember" type="checkbox" id="remember">Запомнить?</label>
-			</div>
-		</form>
-	</section>
 	</div>
 
 </template>
@@ -44,13 +26,52 @@ export default {
 		'send_auth_data',
 	]),
 	async mounted (){
-		await this.send_auth_data(this.login_data);
+        await this.send_auth_data(this.login_data);
+        const router = this.$router;
+        {
+            document.addEventListener("click", e => {
+                try {
+                    let modal_wrapper = e.target.parentElement.closest('.modal-wrapper')
+                    let modal_window = e.target.children.login
+
+                    if (modal_wrapper === null && modal_window){
+                        router.push("/")
+                    }
+                } catch (e) {
+                    undefined
+                }
+            });
+        }
 	}
 }
 </script>
 
-<style scoped>
+<style>
+/*TODO: Сделать анимацию перехода
+.auth-mutation {
+    backface-visibility: hidden;
+    z-index: 2000;
+}
 
+.auth-mutation-move {
+    transition: all 600ms ease-in-out 50ms;
+}
+
+.auth-mutation-enter-active {
+    transition: all 400ms ease-out;
+}
+
+.auth-mutation-leave-active {
+    transition: all 200ms ease-in;
+    position: absolute;
+    z-index: 0;
+}
+
+.auth-mutation-enter,
+.auth-mutation-leave-to {
+    --primary: var(--secondary);
+}
+*/
 .auth{
 	display: flex;
 	flex-direction: column;
