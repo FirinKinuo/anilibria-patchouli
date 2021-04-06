@@ -3,20 +3,20 @@
 		<h3 class="torrent_header">Торренты</h3>
 		<div class="torrents">
 			<div class="torrent_element">
-				<div class="torrent_title">Серия 1-10 [BDRip 1080p HEVC]</div>
+				<div class="torrent_title">Серия 1-1 [WEBRip 1080p]</div>
 					<div class="torrent_info">
 						<span class="torrent torrent_size">212.8 MB</span>
-						<span class="torrent torrent_seeders"><span class="torrent_icon seeders">∧</span>191</span>
-						<span class="torrent torrent_peers"><span class="torrent_icon peers">∨</span>222</span>
+						<span class="torrent torrent_seeders"><span class="torrent_icon seeders">∧</span>31</span>
+						<span class="torrent torrent_peers"><span class="torrent_icon peers">∨</span>6</span>
 					</div>
 				</div>
 
 			<div class="torrent_element">
-				<div class="torrent_title">Серия 1-10 [BDRip 1080p HEVC]</div>
+				<div class="torrent_title">Серия 1-1 [BDRip 1080p HEVC]</div>
 					<div class="torrent_info">
 						<span class="torrent torrent_size">212.8 MB</span>
-						<span class="torrent torrent_seeders"><span class="torrent_icon seeders">∧</span>191</span>
-						<span class="torrent torrent_peers"><span class="torrent_icon peers">∨</span>222</span>
+						<span class="torrent torrent_seeders"><span class="torrent_icon seeders">∧</span>31</span>
+						<span class="torrent torrent_peers"><span class="torrent_icon peers">∨</span>3</span>
 					</div>
 				</div>
 			</div>

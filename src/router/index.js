@@ -26,6 +26,12 @@ export default new Router({
                     component: () => import("@/components/auth/registration")
                 },
             ]
-        }]
+        },
+        {
+            path: '/anime/:id',
+            name: 'anime',
+            components: { anime: () => import("@/components/anime-card/anime-card")},
+            props: true,
+        },]
 
 })

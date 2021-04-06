@@ -5,7 +5,7 @@
 		<input class="lm_input search_field" type="search" id="lm_search" placeholder="Поиск">
 		<button class="lm_input filter">Фильтры</button>
     </div>
-    <button v-if="is_login" class="lm_input fav">Только избранное</button>
+    <button class="lm_input fav">Только избранное</button>
   </nav>
 </template>
 

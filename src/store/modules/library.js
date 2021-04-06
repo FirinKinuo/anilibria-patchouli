@@ -22,6 +22,7 @@ export default {
 
         res.data.forEach(anime => {
             titles.push({
+                id: anime['id'],
                 name: anime['names']['ru'],
                 img: config.al_staticfiles_server + anime.poster.url,
                 episode: anime['torrents']['series']['last']

@@ -2,9 +2,9 @@
     <div class="modal-wrapper">
         <div class="anime" id="anime-card">
             <section class="anime_details">
-                <h2 class="details_text anime_title">{{anime.title}}</h2>
-                <span class="details_text anime_season">{{anime.season}}</span>
-                <span class="details_text anime_genres">{{anime.genres}}</span>
+                <h2 class="details_text anime_title">{{getAnimeData.title}}</h2>
+                <span class="details_text anime_season">{{getAnimeData.season}}</span>
+                <span class="details_text anime_genres">{{getAnimeData.genres}}</span>
             </section>
 			<section class="anime_content">
 				<Player class="anime_player"></Player>
@@ -18,13 +18,33 @@
 
 import Player from "@/components/anime-card/player";
 import Torrents from "@/components/anime-card/torrents";
+import {mapActions, mapGetters} from "vuex";
+
 export default {
     name: "anime-card",
 	components: {Torrents, Player},
-	props: [
-        'anime'
-    ],
-    async mounted() {
+    computed: mapGetters([
+        'getAnimeData',
+    ]),
+    methods: mapActions([
+        'getAnimeDataFromApi',
+    ]),
+    async mounted (){
+        await this.getAnimeDataFromApi(this.$route.params.id);
+        const router = this.$router;
+
+        document.addEventListener("click", e => {
+            try {
+                console.log(e.target.children)
+                let modal_wrapper = e.target.parentElement.closest('.modal-wrapper')
+
+                if (modal_wrapper === null){
+                    router.push("/")
+                }
+            } catch (e) {
+                undefined
+            }
+        });
     }
 }
 </script>

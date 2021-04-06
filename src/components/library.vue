@@ -1,12 +1,17 @@
 <template>
     <section class="adaptive-container" id="library">
+        <router-view name="anime"></router-view>
         <LibraryMenu/>
-        <AnimeCard anime=anime></AnimeCard>
         <section class="library">
-          <figure class="library-element" v-for="(anime, index) in getLibrary" :key="index">
+          <router-link
+              class="library-element"
+              v-for="(anime, index) in getLibrary"
+              :key="index"
+              :to="{name: 'anime', params: { id: anime.id }}"
+          >
             <img class="library-element__bg" :src="anime.img" :alt="anime.name">
             <figcaption class="library-element__episode">{{ anime.episode }}</figcaption>
-        </figure>
+        </router-link>
         </section>
 
     </section>
@@ -15,19 +20,10 @@
 <script>
 import {mapActions, mapGetters} from "vuex";
 import LibraryMenu from "@/components/library-menu";
-import AnimeCard from "@/components/anime-card";
 
 export default {
     name: "library",
-  components: {AnimeCard, LibraryMenu},
-    data(){
-        return {
-            anime: {
-                'name': "test",
-                'img': "https://static.anilibria.tv/upload/release/350x500/8956.jpg?1617405410"
-            }
-        }
-    },
+  components: {LibraryMenu},
   modules: {
       LibraryMenu
     },
