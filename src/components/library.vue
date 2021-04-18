@@ -1,19 +1,26 @@
 <template>
     <section class="adaptive-container" id="library">
-        <router-view name="anime"></router-view>
+        <modal
+            name="anime"
+            @closed="$router.replace('/')"
+            :adaptive=true
+            :width="1200"
+            :minHeight="600"
+            :scrollable="true"
+            height="auto">
+            <router-view name="anime"></router-view>
+        </modal>
         <LibraryMenu/>
         <section class="library">
-          <router-link
+          <figure
               class="library-element"
               v-for="(anime, index) in getLibrary"
               :key="index"
-              :to="{name: 'anime', params: { id: anime.id }}"
-          >
+              @click="redirectToAnimeCard(anime.id)">
             <img class="library-element__bg" :src="anime.img" :alt="anime.name">
             <figcaption class="library-element__episode">{{ anime.episode }}</figcaption>
-        </router-link>
+        </figure>
         </section>
-
     </section>
 </template>
 
@@ -25,20 +32,33 @@ export default {
     name: "library",
   components: {LibraryMenu},
   modules: {
-      LibraryMenu
+      LibraryMenu,
     },
     computed: mapGetters([
       'getLibrary',
   ]),
-  methods: mapActions([
-      'getLibraryDataFromApi',
-  ]),
+  methods: {
+        ...mapActions(['getLibraryDataFromApi']),
+      redirectToAnimeCard(anime_id){
+          this.$modal.show('anime')
+          this.$router.push(`anime/${anime_id}`)
+      }
+  },
   async mounted (){
     await this.getLibraryDataFromApi();
   }
 }
 
 </script>
+
+<style>
+.vm--modal{
+    box-shadow: none !important;
+    background-color: transparent !important;
+    padding: 20px;
+
+}
+</style>
 
 <style scoped>
     .library{

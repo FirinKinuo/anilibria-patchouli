@@ -1,17 +1,15 @@
 <template>
-    <div class="modal-wrapper">
-        <div class="anime" id="anime-card">
-            <section class="anime_details">
-                <h2 class="details_text anime_title">{{getAnimeData.title}}</h2>
-                <span class="details_text anime_season">{{getAnimeData.season}}</span>
-                <span class="details_text anime_genres">{{getAnimeData.genres}}</span>
-            </section>
-			<section class="anime_content">
-				<Player class="anime_player"></Player>
-				<Torrents></Torrents>
-			</section>
-        </div>
-    </div>
+      <div class="anime" id="anime-card">
+          <section class="anime_details">
+              <h2 class="details_text anime_title">{{getAnimeData.title}}</h2>
+              <span class="details_text anime_season">{{getAnimeData.season}}</span>
+              <span class="details_text anime_genres">{{getAnimeData.genres}}</span>
+          </section>
+          <section class="anime_content">
+              <Player class="anime_player"></Player>
+              <Torrents></Torrents>
+          </section>
+      </div>
 </template>
 
 <script>
@@ -31,28 +29,12 @@ export default {
     ]),
     async mounted (){
         await this.getAnimeDataFromApi(this.$route.params.id);
-        const router = this.$router;
-
-        document.addEventListener("click", e => {
-            try {
-                console.log(e.target.children)
-                let modal_wrapper = e.target.parentElement.closest('.modal-wrapper')
-
-                if (modal_wrapper === null){
-                    router.push("/")
-                }
-            } catch (e) {
-                undefined
-            }
-        });
     }
 }
 </script>
 
 <style scoped>
 .anime{
-    max-width: 1200px;
-    min-height: 600px;
     display: flex;
 	flex-direction: column;
     position: relative;
@@ -90,7 +72,6 @@ export default {
 	height: 410px;
 	overflow: hidden;
 	border-radius: 10px;
-	box-shadow: 10px 15px 0 var(--dark);
 	z-index: 1001;
 }
 

@@ -23,15 +23,18 @@ export default new Router({
                 },
                 {
                     path: 'registration',
-                    component: () => import("@/components/auth/registration")
+                    component: () => import("@/components/auth/registration"),
                 },
             ]
         },
         {
-            path: '/anime/:id',
+            path: '/anime/:id(\\d+)',
             name: 'anime',
             components: { anime: () => import("@/components/anime-card/anime-card")},
-            props: true,
-        },]
-
+        },
+        {
+            path: '/anime/*',
+            redirect: '/',
+        }
+    ]
 })
