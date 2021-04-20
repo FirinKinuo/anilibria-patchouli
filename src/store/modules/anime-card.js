@@ -29,7 +29,7 @@ export default {
             anime_data = {
                 title: res.data['names']['ru'],
                 season: `${res.data['season']['string']} ${res.data['season']['year']}`,
-                genres: res.data['genres'][0],
+                genres: res.data['genres'].join(', '),
             }
             commit('setAnimeData', anime_data);
         }
