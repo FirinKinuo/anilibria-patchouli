@@ -2,23 +2,14 @@
 	<section class="torrents_section" id="torrents">
 		<h3 class="torrent_header">Торренты</h3>
 		<div class="torrents">
-			<div class="torrent_element">
-				<div class="torrent_title">Серия 1-1 [WEBRip 1080p]</div>
+			<a class="torrent_element" v-for="torrent in torrents_data" :key="torrent.id" :href="torrent.link">
+				<div class="torrent_title">{{ torrent.title }}</div>
 					<div class="torrent_info">
-						<span class="torrent torrent_size">212.8 MB</span>
-						<span class="torrent torrent_seeders"><span class="torrent_icon seeders">∧</span>31</span>
-						<span class="torrent torrent_peers"><span class="torrent_icon peers">∨</span>6</span>
+						<span class="torrent torrent_size">{{ torrent.size }}</span>
+						<span class="torrent torrent_seeders"><span class="torrent_icon seeders">∧</span>{{ torrent.seeders }}</span>
+						<span class="torrent torrent_peers"><span class="torrent_icon peers">∨</span>{{ torrent.peers }}</span>
 					</div>
-				</div>
-
-			<div class="torrent_element">
-				<div class="torrent_title">Серия 1-1 [BDRip 1080p HEVC]</div>
-					<div class="torrent_info">
-						<span class="torrent torrent_size">212.8 MB</span>
-						<span class="torrent torrent_seeders"><span class="torrent_icon seeders">∧</span>31</span>
-						<span class="torrent torrent_peers"><span class="torrent_icon peers">∨</span>3</span>
-					</div>
-				</div>
+				</a>
 			</div>
 	</section>
 
@@ -26,7 +17,8 @@
 
 <script>
 export default {
-	name: "torrents"
+	name: "torrents",
+  props: ['torrents_data']
 }
 </script>
 
@@ -47,7 +39,7 @@ export default {
 }
 
 .torrent_element{
-	margin: 10px 0;
+	margin: 5px;
 }
 
 .torrent{

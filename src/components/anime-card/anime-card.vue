@@ -7,7 +7,7 @@
           </section>
           <section class="anime_content">
               <Player class="anime_player"></Player>
-              <Torrents></Torrents>
+              <Torrents :torrents_data=getAnimeData.torrents></Torrents>
           </section>
       </div>
 </template>
