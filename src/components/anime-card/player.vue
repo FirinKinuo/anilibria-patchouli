@@ -21,6 +21,14 @@ export default {
           sources: [{
             type: "application/x-mpegURL",
             src: "https://de8.libria.fun/videos/ts/8876/0001/playlist.m3u8",
+          },
+          {
+            type: "application/x-mpegURL",
+            src: "https://de8.libria.fun/videos/ts/8876/0001/playlist.m3u8",
+          },
+          {
+            type: "application/x-mpegURL",
+            src: "https://de8.libria.fun/videos/ts/8876/0001/playlist.m3u8",
           }],
         }
       }

@@ -1,5 +1,0 @@
-{
-  "al_backend_api": "https://api.anilibria.tv/v2/",
-  "al_staticfiles_server": "https://static.anilibria.tv/",
-  "your_backend_api": "http://192.168.3.9:8000/api/"
-}

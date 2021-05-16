@@ -9,8 +9,9 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "bootstrap-icons": "^1.4.0",
     "core-js": "^3.6.5",
+    "node-sass": "^5.0.0",
+    "sass-loader": "^10.1.1",
     "videojs-contrib-hls": "^5.15.0",
     "vue": "^2.6.11",
     "vue-js-modal": "^2.0.0-rc.6",

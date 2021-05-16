@@ -1,78 +1,54 @@
 <template>
-    <main id="app" class="container-full">
-      <MainMenu></MainMenu>
-        <TodayTitles/>
-      <Library/>
-    </main>
+  <body id="app">
+  <v-header/>
+  <router-view/>
+  </body>
 </template>
 
 <script>
-
-import MainMenu from "@/components/mainMenu";
-import Library from "@/components/library";
-import TodayTitles from "@/components/today-titles"
+import VHeader from "@/components/header";
 
 export default {
-    name: 'App',
-
-    components: {
-        TodayTitles,
-        MainMenu,
-        Library
-    },
+  name: 'App',
+  components: {VHeader},
 }
 
 </script>
 
-<style>
+<style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;1,200;1,400;1,700&display=swap');
+@import "/src/assets/scss/variables";
+
 :root {
-  font-size: 16pt;
-  --primary: #e73321;
-  --secondary: #fa9600;
-  --success: #69cc57;
-  --warning: #ea7222;
-  --dark: #011627;
+  font-size: 20px;
 }
 
-*{
-    margin: 0;
-    padding: 0;
-    outline: none;
-    border: 0;
-    text-decoration: none;
-	color: var(--dark);
-    font-family: 'Montserrat', sans-serif;
-    scrollbar-width: thin;
-    scrollbar-color: var(--primary) white;
+* {
+  outline: none;
+  border: 0;
+  text-decoration: none;
+  color: var(--dark);
+  font-family: 'Montserrat', sans-serif;
+  scrollbar-width: thin;
+  scrollbar-color: $primary $dark;
 }
 
 *::-webkit-scrollbar {
-    width: 5px;
+  width: 5px;
 }
+
 *::-webkit-scrollbar-track {
-    background: white;
+  background: white;
 }
+
 *::-webkit-scrollbar-thumb {
-    background-color: var(--primary);
+  background-color: var(--primary);
 }
 
-.container-full{
-  width: 100%;
-}
-
-.modal-wrapper{
-	position: fixed;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	top:  0;
-	left: 0;
-	width: 100vw;
-	height: 100vh;
-	z-index: 100;
-	background-color: rgba(33, 9, 9, 0.5);
-
+#app {
+  background-color: $dark;
+  padding: 0;
+  margin: 0;
 }
 
 </style>
