@@ -1,0 +1,21 @@
+.text {
+  &_small {
+    margin: 0;
+    font-size: 1rem;
+  }
+  &_medium {
+    margin: 0;
+    font-size: 1.4rem;
+  }
+  &_big {
+    margin: 0;
+    font-size: 1.8rem;
+  }
+
+  &_bold {
+    margin: 0;
+    font-weight: bold;
+  }
+
+
+}

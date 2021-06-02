@@ -15,6 +15,10 @@ export default new Router({
       path: '/library',
       component: () => import("@/components/library/index")
     },
+      {
+      path: '/anime/:id(\\d+)',
+      component: () => import("@/components/anime-page/index")
+    },
 
     {
       path: '/auth',
@@ -33,11 +37,7 @@ export default new Router({
         },
       ]
     },
-    {
-      path: '/anime/:id(\\d+)',
-      name: 'anime',
-      components: {anime: () => import("@/components/anime-card/anime-card")},
-    },
+
     {
       path: '/anime/*',
       redirect: '/',

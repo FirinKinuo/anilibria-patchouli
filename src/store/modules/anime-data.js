@@ -4,7 +4,7 @@ export default {
   state: {
     library: [],
     today_library: [],
-    anime_data: []
+    anime_data: {}
   },
 
   getters: {
@@ -50,6 +50,35 @@ export default {
           current: res.data['player']['series']['last'],
           total: res.data['type']['series']
         },
+      }
+
+      commit('insertAnimeData', anime_data);
+    },
+
+    async fetchAnimeCardData({commit}, anime_id) {
+      const res = await axios.get(
+          `${process.env.VUE_APP_ANILIBRIA_API}getTitle?filter=id,names,genres,season,description,poster.url,type,team,player.series.last,torrents&id=${anime_id}`
+      );
+
+      console.log(res)
+
+      let anime_data = {
+        names: res.data['names'],
+        poster: process.env.VUE_APP_AL_STATICFILES_SERVER + res.data['poster']['url'],
+        description: res.data['description'],
+        genres: res.data['genres'].join(', '),
+        season: `${res.data['season']['string']} ${res.data['season']['year']}`,
+        type: res.data['type']['full_string'],
+        team: {
+          voice: res.data['team']['voice'].join(', '),
+          timing: res.data['team']['timing'].join(', '),
+          techs: res.data['team']['translator'].concat(res.data['team']['editing']).concat(res.data['team']['decor']).join(', ')
+        },
+        episodes: {
+          current: res.data['player']['series']['last'],
+          total: res.data['type']['series']
+        },
+        torrents: res.data['torrents']['list']
       }
 
       commit('insertAnimeData', anime_data);
